@@ -1,0 +1,56 @@
+<div class="col-md-6 offset-md-3">
+  <div class="card">
+    <div class="card-header">
+      Login
+    </div>
+    <div class="card-body">
+      <form action="/layoutsindex" method="" id="signup-form" name="login">
+        <div class="form-group">
+          <label for="inputCorreo" class="form-label mt-4">Correo</label>
+          <input type="text" name="correo" id="inputCorreo" placeholder="E-mail" class="form-control" >
+        </div>
+        <div class="form-group">
+          <label for="inputPassword" class="form-label mt-4">Password</label>
+          <input type="password" class="form-control" id="inputPassword" placeholder="Password">
+        </div>
+        <button class="btn btn-primary btn-block"> Sign up </button>
+
+      </form>
+
+    </div>
+
+  </div>
+</div>
+<script type="module">
+import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.4.0/firebase-auth.js";
+    const signupForm = document.querySelector('#signup-form');
+    signupForm.addEventListener('submit',(e)=>{
+      console.log('Botón2');
+      e.preventDefault();
+      const signupEmail = document.querySelector('#inputCorreo').value;
+      const signupPassword = document.querySelector('#inputPassword').value;
+      console.log(signupEmail,signupPassword);
+
+
+      const auth = getAuth();
+      signInWithEmailAndPassword(auth, signupEmail, signupPassword)
+      .then((userCredential) => {
+        // Signed in
+        const user = userCredential.user;
+        console.log('Sesión iniciada');
+        document.location.href="/layoutsRegistro";
+
+        signupForm.reset();
+
+
+        // ...
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        // ..
+      });
+
+
+    });
+</script>

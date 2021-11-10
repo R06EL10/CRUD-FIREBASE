@@ -1,0 +1,75 @@
+<div class="col-md-6 offset-md-3">
+  <div class="card">
+    <div class="card-header">
+      Formulario de Registro de usuarios
+    </div>
+    <div class="card-body">
+        Introduzca los datos
+    </div>
+    <div class="card-footer">
+<!--volver a colocar action="users" method="POST"-->
+      <form  action="/users" method="POST" id="signup-form">
+        <div class="form-group">
+          <input type="text" name="Nombre" placeholder="Nombre" class="form-control" id="nombre" autofocus>
+        </div>
+        <div class="form-group">
+          <input type="text" name="apellidoPaterno" placeholder="Apellido Paterno" id="apat" class="form-control" >
+        </div>
+        <div class="form-group">
+          <input type="text" name="apellidoMaterno" placeholder="Apellido Materno" id="amat" class="form-control" >
+        </div>
+        <div class="form-group">
+          <input type="text" name="correo" placeholder="E-mail" class="form-control" id="email" >
+        </div>
+        <button class="btn btn-primary btn-block" id="agregar">
+          Añadir
+        </button>
+      </form>
+
+        <form action="/users" method="GET">
+          <button class="btn btn-primary btn-block">
+            Consultar
+          </button>
+        </form>
+
+    </div>
+  </div>
+</div>
+<!--
+<script type="module">
+
+import {initializeApp} from "https://www.gstatic.com/firebasejs/9.4.0/firebase-app.js";
+import { collection } from "https://www.gstatic.com/firebasejs/9.4.0/firebase-firestore.js";
+import { getFirestore,doc, setDoc } from "https://www.gstatic.com/firebasejs/9.4.0/firebase-firestore.js";
+
+  // Initialize Firebase
+
+  //  const firestore = getFirestore(firebaseApp);
+
+  //  const taskForm = document.getElementById("task-form");
+const db = getFirestore();
+console.log("Base conectada");
+
+      const signupForm = document.querySelector('#signup-form');
+      signupForm.addEventListener('submit', async (e)=>{
+        console.log('Botón2');
+        e.preventDefault();
+        const nomb=document.querySelector('#nombre').value;
+        const apat=document.querySelector('#apat').value;
+        const amat=document.querySelector('#amat').value;
+        const ema=document.querySelector('#email').value;
+      //  const usuariofire={nombre:nomb,ap:apat,am:amat,em:ema};
+        //await db.collection("users").doc("usuarios").set(user)
+        //await saveTask(nombre, ap, am, em);
+        //const newId = db.createId();
+        const docData = {
+              nombre: "Hello world!",
+              ap: "Hello world!",
+              am: "Hello world!",
+              em: "Hello world!"
+          };
+          await setDoc(doc(db,"users", "1"), docData);
+        console.log("Usuario registrado ",nomb,apat,amat,ema);
+
+        });
+</script-->
